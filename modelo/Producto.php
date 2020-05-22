@@ -33,26 +33,23 @@ class Producto
     {
         $sentencia = "
                     INSERT INTO 
-                        mantenimiento 
+                        producto 
                         (                            
                             nombre,
                             referencia,
                             precio,
                             peso,
                             categoria,
-                            stock,
-                            fechaCreacion
+                            stock
                         )
                         VALUES
                         (
-                            $this->id,
-                            $this->nombre,
-                            $this->referencia,
+                            '$this->nombre',
+                            '$this->referencia',
                             $this->precio,
                             $this->peso,
-                            $this->categoria,
-                            $this->stock,
-                            $this->fechaCreacion
+                            '$this->categoria',
+                            $this->stock
                         )
                     ";
         $this->conexion->ejecutar($sentencia);
@@ -82,7 +79,7 @@ class Producto
                 DELETE
                 FROM
                     producto 
-                Where id = $this->id";
+                Where id = '$this->id'";
 
         $this->conexion->ejecutar($sentenciaSql);
     }

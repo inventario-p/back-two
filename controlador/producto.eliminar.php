@@ -1,18 +1,18 @@
 <?php
-require_once ('../entidad/Mantenimiento.php');
-require_once ('../modelo/Mantenimiento.php');
+require_once ('../entidad/Producto.php');
+require_once ('../modelo/Producto.php');
 
 $retorno = array ('exito'=>1,'mensaje'=> 'La información se eliminó correctamente');
 
 try{
     $conexion = new \Conexion();
-    $id = $_POST['id'];
+    $id = $_REQUEST['id'];
 
-    $eMantenimiento = new \entidad\Mantenimiento();
-    $eMantenimiento->setId($id);
-    
-    $mMantenimiento = new \modelo\Mantenimiento($eMantenimiento);
-    $mMantenimiento->eliminar();
+    $eProducto = new \entidad\Producto();
+    $eProducto->setId($id);
+
+    $mProducto = new \modelo\Producto($eProducto);
+    $mProducto->eliminar();
     
 }catch(Exception $e) {
     $retorno['exito']=0;

@@ -1,7 +1,7 @@
 <?php
 
-require_once ('../entidad/Mantenimiento.php');
-require_once ('../modelo/Mantenimiento.php');
+require_once ('../entidad/Producto.php');
+require_once ('../modelo/Producto.php');
 require_once ('../entorno/Conexion.php');
 
 $retorno = array ('exito'=>1,'mensaje'=> 'la información se guardo correctamente', 'data'=>null, 'numeroRegitros'=>0);
@@ -16,26 +16,16 @@ try{
     $categoria = $_REQUEST['categoria'];
     $stock = $_REQUEST['stock'];
 
-    //$valorRepuesto = implode(",", $repuesto);
+    $eProducto = new \entidad\Producto();
+    $eProducto->setNombre($nombre);
+    $eProducto->setReferencia($referencia);
+    $eProducto->setPrecio($precio);
+    $eProducto->setPeso($peso);
+    $eProducto->setCategoria($categoria);
+    $eProducto->setStock($stock);
 
-    $eMantenimiento = new \entidad\Mantenimiento();
-    $eMantenimiento->setId($id);
-    $eMantenimiento->setIdEquipo($idEquipo);
-    $eMantenimiento->setIdEmpresa($idEmpresa);
-    $eMantenimiento->setIdEmpleado($idEmpleado);
-    $eMantenimiento->setTipoMnt($tipoMnt); 
-
-    $eMantenimiento->setNoReporte($noReporte);
-    $eMantenimiento->setRepuesto($repuesto);
-    $eMantenimiento->setFechaRealizacion($fechaRealizacion);
-    $eMantenimiento->setCosto($costo);
-    $eMantenimiento->setImagenMnt($imagenMnt);
-    $eMantenimiento->setPdfReporte($pdfReporte);
-    $eMantenimiento->setObservaciones($observaciones);
-    $eMantenimiento->setEvaluacionIntervencion($evaluacionIntervencion);
-
-    $mMantenimiento = new \modelo\Mantenimiento($eMantenimiento);
-    $mMantenimiento->adicionar();
+    $mProducto = new \modelo\Producto($eProducto);
+    $mProducto->adicionar();
     
 }catch(Exception $e) {
     $retorno['exito']=0;
