@@ -61,15 +61,14 @@ class Producto
                     UPDATE
                         producto
                     SET
-                        nombre = $this->nombre,
-                        referencia = $this->referencia,
+                        nombre = '$this->nombre',
+                        referencia = '$this->referencia',
                         precio = $this->precio,
-                        peso = '$this->peso',
+                        peso = $this->peso,
                         categoria = '$this->categoria',
                         stock = $this->stock,
                     WHERE
-                        id = $this->id
-                    ";
+                        id = $this->id";
         $this->conexion->ejecutar($sentencia);
     }
 
