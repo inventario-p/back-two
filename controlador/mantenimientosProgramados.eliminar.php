@@ -1,16 +1,16 @@
 <?php
-require_once ('../entidad/MantenimientosProgramados.php');
-require_once ('../modelo/MantenimientosProgramados.php');
+require_once('../entidad/Venta.php');
+require_once('../modelo/Venta.php');
 
 $retorno = array ('exito'=>1,'mensaje'=> 'La información se eliminó correctamente');
 
 try{
     $id = $_POST['id'];
 
-    $eMantenimiento = new \entidad\MantenimientosProgramados();
+    $eMantenimiento = new \entidad\Venta();
     $eMantenimiento->setId($id);
     
-    $mMantenimiento = new \modelo\MantenimientosProgramados($eMantenimiento);
+    $mMantenimiento = new \modelo\Venta($eMantenimiento);
     $mMantenimiento->eliminar();
     
 }catch(Exception $e) {

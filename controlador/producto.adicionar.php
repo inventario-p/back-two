@@ -7,19 +7,14 @@ require_once ('../entorno/Conexion.php');
 $retorno = array ('exito'=>1,'mensaje'=> 'la información se guardo correctamente', 'data'=>null, 'numeroRegitros'=>0);
 
 try{
+
     $id = $_REQUEST['id'];
-    $idEquipo = $_REQUEST['idEquipo'];
-    $idEmpresa = $_REQUEST['idEmpresa'];
-    $idEmpleado = $_REQUEST['idEmpleado'];
-    $tipoMnt = $_REQUEST['tipoMnt'];
-    $noReporte = $_REQUEST['noReporte'];
-    $repuesto = $_REQUEST['repuesto'];
-    $fechaRealizacion = $_REQUEST['fechaRealizacion'];
-    $costo = $_REQUEST['costo'];
-    $imagenMnt = $_REQUEST['imagenMnt'];
-    $pdfReporte = $_REQUEST['pdfReporte'];
-    $observaciones = $_REQUEST['observaciones'];
-    $evaluacionIntervencion = $_REQUEST['evaluacionIntervencion'];
+    $nombre = $_REQUEST['nombre'];
+    $referencia = $_REQUEST['referencia'];
+    $precio = $_REQUEST['precio'];
+    $peso = $_REQUEST['peso'];
+    $categoria = $_REQUEST['categoria'];
+    $stock = $_REQUEST['stock'];
 
     //$valorRepuesto = implode(",", $repuesto);
 

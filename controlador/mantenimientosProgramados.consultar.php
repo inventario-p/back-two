@@ -1,6 +1,6 @@
 <?php
-require_once '../entidad/MantenimientosProgramados.php';
-require_once '../modelo/MantenimientosProgramados.php';
+require_once '../entidad/Venta.php';
+require_once '../modelo/Venta.php';
 
 $retorno = array ('exito'=>1, 'mensaje'=> '', 'data'=>null, 'numeroRegistros'=>'');
 
@@ -9,12 +9,12 @@ try {
     $idEmpresa = $_REQUEST['idEmpresa'];
     $estado = $_REQUEST['estado'];
     
-    $mttosProgramadosE =  new \entidad\MantenimientosProgramados();
+    $mttosProgramadosE =  new \entidad\Venta();
     $mttosProgramadosE->setId($id);
     $mttosProgramadosE->setIdEmpresa($idEmpresa);
     $mttosProgramadosE->setEstado($estado);
 
-    $mttosProgramadosM = new \modelo\MantenimientosProgramados($mttosProgramadosE);
+    $mttosProgramadosM = new \modelo\Venta($mttosProgramadosE);
     $mttosProgramadosM->consultar();
     
     $retorno['numeroRegistros'] = $mttosProgramadosM->conexion->obtenerNumeroRegistros();

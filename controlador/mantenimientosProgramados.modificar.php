@@ -1,6 +1,6 @@
 <?php
-require_once ('../entidad/MantenimientosProgramados.php');
-require_once ('../modelo/MantenimientosProgramados.php');
+require_once('../entidad/Venta.php');
+require_once('../modelo/Venta.php');
 
 $retorno = array ('exito'=>1,'mensaje'=> 'La información se adicionó correctamente');
 
@@ -13,7 +13,7 @@ try{
     $estado = $_REQUEST['estado'];
     $mantenimientosPreventivos = $_REQUEST['mantenimientosPreventivos'];
 
-    $eMantenimiento = new \entidad\MantenimientosProgramados();
+    $eMantenimiento = new \entidad\Venta();
     $eMantenimiento->setId($id);
     $eMantenimiento->setIdEmpresa($idEmpresa);
     $eMantenimiento->setFechaInicio($fechaInicio);
@@ -22,7 +22,7 @@ try{
     $eMantenimiento->setEstado($estado);
     $eMantenimiento->setMantenimientosPreventivos($mantenimientosPreventivos);
 
-    $mMantenimiento = new \modelo\MantenimientosProgramados($eMantenimiento);
+    $mMantenimiento = new \modelo\Venta($eMantenimiento);
     $mMantenimiento->modificar();
 
 }catch(Exception $e) {
