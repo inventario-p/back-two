@@ -2,7 +2,8 @@
 require_once ('../entidad/Producto.php');
 require_once ('../modelo/Producto.php');
 
-$retorno = array ('exito'=>1,'mensaje'=> '', 'data'=>null, 'numeroRegitros'=>0);
+// $retorno = array ('exito'=>1,'mensaje'=> '', 'data'=>null, 'numeroRegitros'=>0);
+$retorno = array ();
 
 try{
     $id = $_REQUEST['id'];
@@ -14,13 +15,13 @@ try{
     $stock = $_REQUEST['stock'];
 
     $eProducto = new \entidad\Producto();
-    $eProducto->getId($id);
-    $eProducto->getNombre($nombre);
-    $eProducto->getReferencia($referencia);
-    $eProducto->getPrecio($precio);
-    $eProducto->getPeso($peso);
-    $eProducto->getCategoria($categoria);
-    $eProducto->getStock($stock);
+    $eProducto->setId($id);
+    $eProducto->setNombre($nombre);
+    $eProducto->setReferencia($referencia);
+    $eProducto->setPrecio($precio);
+    $eProducto->setPeso($peso);
+    $eProducto->setCategoria($categoria);
+    $eProducto->setStock($stock);
 
     $mProducto = new \modelo\Producto($eProducto);
     $mProducto->consultar();

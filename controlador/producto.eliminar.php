@@ -6,7 +6,7 @@ $retorno = array ('exito'=>1,'mensaje'=> 'La información se eliminó correctame
 
 try{
     $conexion = new \Conexion();
-    $id = $_REQUEST['id'];
+    $id = $_POST['id'];
 
     $eProducto = new \entidad\Producto();
     $eProducto->setId($id);

@@ -10,14 +10,10 @@ if (@$_SESSION['autenticado'] != 1) {
 }
 if(isset($_SESSION['idUsuario'])){
     $retorno['idUsuario'] = $_SESSION['idUsuario'];
-    $retorno['idRol'] = $_SESSION['idRol'];
-    $retorno['idEmpresa'] = $_SESSION['idEmpresa'];
-    $retorno['usuario'] = $_SESSION['usuario'];
     $retorno['nombre'] = $_SESSION['nombre'];
-    $retorno['apellido'] = $_SESSION['apellido'];
-    $retorno['correo'] = $_SESSION['correo'];
-    $retorno['imagen'] = $_SESSION['imagen'];
-    $retorno['nombreEmpresa'] = $_SESSION['nombreEmpresa'];
+    $retorno['identificacion'] = $_SESSION['identificacion'];
+    $retorno['mail'] = $_SESSION['mail'];
+    $retorno['usuario'] = $_SESSION['usuario'];
 }
 echo json_encode($retorno);
 ?>

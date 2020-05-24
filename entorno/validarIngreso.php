@@ -9,18 +9,15 @@ $conexion = new \Conexion();
 $retorno = array();
 $_SESSION['autenticado'] = 0;
 
-
-$usuario = $_POST['Usuario'];
-//$contrasena = md5($_POST['Contrasena']);
-$contrasena = $_POST['Contrasena'];
-//Obtengo la fecha actual
+$usuario = $_REQUEST['Usuario'];
+$contrasena = $_REQUEST['Contrasena'];
 $fechaActual = date("Y-m-d");
+$mensaje = 'Usuario y/o contraseña inválida';
 
 //llamo el procedimiento almacenado que me consulta el usuario
-///se modifica el nombre del store procedure anadiendo una a pueto que no fue posible modificarlo.
 
 $sentenciaSql = "
-                CALL SpConsultarUsuario('$usuario')
+                SELECT * FROM `usuario` WHERE usuario = '$usuario'
                 ";
 $conexion->ejecutar($sentenciaSql);
 
@@ -33,28 +30,20 @@ if($conexion->obtenerNumeroRegistros() == 1){
     if($fila->contrasena == $contrasena){
         //Valido si el usuario está activo
             $_SESSION['autenticado'] = 1;
-            $_SESSION['idUsuario'] = $fila->id;
-            $_SESSION['idRol'] = $fila->idRol;
-            $_SESSION['idEmpresa'] = $fila->idEmpresa;
-            $_SESSION['usuario'] = $fila->usuario;
             $_SESSION['nombre'] = $fila->nombre;
-            $_SESSION['apellido'] = $fila->apellido;
-            $_SESSION['correo'] = $fila->correo;
-            $_SESSION['imagen'] = $fila->imagen;
-            $_SESSION['nombreEmpresa'] = $fila->nombreEmpresa;
-            $retorno['idRol'] = $fila->idRol;
+            $_SESSION['identificacion'] = $fila->identificacion;
+            $_SESSION['mail'] = $fila->mail;
+            $_SESSION['usuario'] = $fila->usuario;
             $retorno['exito'] = 1;
     }else{
         $retorno['exito'] = 0;
-        $retorno['mensaje'] = 'Usuario y/o contraseña inválida';
+        $retorno['mensaje'] = $mensaje;
         //mensajes para probar
-        echo "contrasena incorrecta";
+        echo "contrasena incorrecta = ".$fila->contrasena;
     }
 }else{
     $retorno['exito'] = 0;
-    $retorno['mensaje'] = 'Usuario y/o contraseña inválida.';
-    //mensajes para prueba
-    //echo "no se encontrò el usuario";
+    $retorno['mensaje'] = $mensaje;
 }
 echo json_encode($retorno);
 ?>

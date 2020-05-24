@@ -1,6 +1,7 @@
 <?php 
 namespace modelo;
 require_once('../entorno/Conexion.php');
+header("Access-Control-Allow-Origin: *");
 
 class Producto
 {
@@ -57,7 +58,7 @@ class Producto
 
     public function modificar()
     {
-        $sentencia = "                                        
+      $sentencia = "                                        
                     UPDATE
                         producto
                     SET
@@ -66,7 +67,7 @@ class Producto
                         precio = $this->precio,
                         peso = $this->peso,
                         categoria = '$this->categoria',
-                        stock = $this->stock,
+                        stock = $this->stock
                     WHERE
                         id = $this->id";
         $this->conexion->ejecutar($sentencia);
@@ -94,6 +95,7 @@ class Producto
                     $this->condicion
                     ";
         $this->conexion->ejecutar($sentencia);
+        // echo '<>'.$sentencia.'Condicion: '.$this->condicion.'</pre>';
     }
 
     public function obtenerCondicion()
