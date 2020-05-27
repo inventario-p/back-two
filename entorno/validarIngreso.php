@@ -1,9 +1,14 @@
 <?php
 ini_set('session.save_path',realpath(dirname($_SERVER['DOCUMENT_ROOT']) . '/tmp'));
 ini_set('session.gc_probability', 1);
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Access-Control-Allow-Methods: GET, POST');
+
 session_start();
 require_once('Conexion.php');
-//Establezco la zona horaria por defecto para todas las funciones de fecha y hora utilizadas en el script
+
 date_default_timezone_set('America/Bogota');
 $conexion = new \Conexion();
 $retorno = array();
@@ -35,11 +40,12 @@ if($conexion->obtenerNumeroRegistros() == 1){
             $_SESSION['mail'] = $fila->mail;
             $_SESSION['usuario'] = $fila->usuario;
             $retorno['exito'] = 1;
+            $retorno['mensaje'] = "Usuario Autenticado";
+
     }else{
         $retorno['exito'] = 0;
         $retorno['mensaje'] = $mensaje;
-        //mensajes para probar
-        echo "contrasena incorrecta = ".$fila->contrasena;
+        //echo "contrasena incorrecta = ".$fila->contrasena;
     }
 }else{
     $retorno['exito'] = 0;

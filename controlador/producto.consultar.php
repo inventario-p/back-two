@@ -26,24 +26,24 @@ try{
     $mProducto = new \modelo\Producto($eProducto);
     $mProducto->consultar();
 
-    $retorno['numeroRegitros'] = $mProducto->conexion->obtenerNumeroRegistros();
+//    $retorno['numeroRegitros'] = $mProducto->conexion->obtenerNumeroRegistros();
     $contador=0;
     while($fila = $mProducto->conexion->obtenerObjeto()){
-        $retorno['data'][$contador]['id'] = $fila->id;
-        $retorno['data'][$contador]['nombre'] = $fila->nombre;
-        $retorno['data'][$contador]['referencia'] = $fila->referencia;
-        $retorno['data'][$contador]['precio'] = $fila->precio;
-        $retorno['data'][$contador]['peso'] = $fila->peso;
-        $retorno['data'][$contador]['categoria'] = $fila->categoria;
-        $retorno['data'][$contador]['stock'] = $fila->stock;
-        $retorno['data'][$contador]['fechaCreacion'] = $fila->fechaCreacion;
+        $retorno[$contador]['id'] = $fila->id;
+        $retorno[$contador]['nombre'] = $fila->nombre;
+        $retorno[$contador]['referencia'] = $fila->referencia;
+        $retorno[$contador]['precio'] = $fila->precio;
+        $retorno[$contador]['peso'] = $fila->peso;
+        $retorno[$contador]['categoria'] = $fila->categoria;
+        $retorno[$contador]['stock'] = $fila->stock;
+        $retorno[$contador]['fechaCreacion'] = $fila->fechaCreacion;
 
         $contador++;
     }
 
 }catch(Exception $e) {
-    $retorno['exito'] = 0;
-    $retorno['mensaje'] = $e->getMessage();
+//    $retorno['exito'] = 0;
+//    $retorno['mensaje'] = $e->getMessage();
 }
 echo json_encode($retorno);
 ?>
