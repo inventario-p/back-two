@@ -1,11 +1,12 @@
 <?php
 require_once '../entorno/Conexion.php';
+header("Access-Control-Allow-Origin: *");
 
 $retorno = array("exito"=>1, "existe"=>0);
 
 $conexion = new Conexion();
 
-$usuario = $_POST['usuario'];
+$usuario = $_POST['usuasrio'];
 $sentenciaSql = "
                     SELECT
                         usuario

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2020 a las 21:37:02
+-- Tiempo de generación: 28-05-2020 a las 18:21:51
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `konecta`
 --
-CREATE DATABASE IF NOT EXISTS `konecta` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `konecta`;
 
 -- --------------------------------------------------------
 
@@ -52,9 +50,35 @@ INSERT INTO `producto` (`id`, `nombre`, `referencia`, `precio`, `peso`, `categor
 (3, 'Producto Especial', '001', 1000, 100, 'producto', 2, '0000-00-00', NULL),
 (4, 'Producto Especial 2', '001', 1000, 100, 'producto', 12, '0000-00-00', NULL),
 (6, 'Producto Especial 4', '001', 10000, 1000, 'producto', 120, '0000-00-00', NULL),
-(7, 'producto insertado 2', '0045', 2600, 7000, '5000', 4000, '2020-05-22', NULL),
-(8, 'producto insertado 2', '0045', 2600, 7000, '5000', 4000, '2020-05-22', NULL),
-(9, 'producto insertado 3', '0046', 2601, 7000, '5000', 4000, '2020-05-22', NULL);
+(10, 'producto insertado 92', '0046', 2601, 7000, '5000', 4000, '2020-05-23', NULL),
+(11, 'producto insertado 93', '0046', 2601, 7000, '5000', 4000, '2020-05-23', NULL),
+(12, 'producto insertado 94', '0046', 2601, 7000, '5000', 4000, '2020-05-23', NULL),
+(13, 'producto insertado 94', '0046', 2601, 7000, '5000', 4000, '2020-05-23', NULL),
+(14, 'producto insertado 95', '0046', 2601, 7000, '5000', 4000, '2020-05-24', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `identificacion` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
+  `mail` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `usuario` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `contrasena` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `estado` int(20) NOT NULL,
+  `fechaCreacion` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `identificacion`, `mail`, `usuario`, `contrasena`, `estado`, `fechaCreacion`) VALUES
+(2, 'Nombre', '1075077588', 'sebastian@gmail.com', 'sebastian', 'password2020', 1, '2020-05-22 14:01:08');
 
 -- --------------------------------------------------------
 
@@ -80,6 +104,12 @@ ALTER TABLE `producto`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `venta`
 --
 ALTER TABLE `venta`
@@ -93,7 +123,13 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `venta`
